@@ -9,6 +9,7 @@ type User {
   email: String
   role: Role!
   createdAt: DateTime
+  matriculas: [Matricula]
 }
 input UserInput{
   nome: String!
@@ -29,7 +30,7 @@ enum RolesType {
 }
 
 type Query {
-  users : [User]
+  users (page: Int, limit: Int):[User]
   user(id: ID!): User!
 }
 type Mutation {

@@ -11,7 +11,7 @@ const turmaResolvers = {
   }),
 
   Query: {
-    turmas: (_, __, { dataSources }) => dataSources.turmasAPI.getTurmas(),
+    turmas: (_, args, { dataSources }) => dataSources.turmasAPI.getTurmas(args),
     turma: (_, { id }, { dataSources }) => dataSources.turmasAPI.getTurma(id)
   },
 
@@ -20,6 +20,14 @@ const turmaResolvers = {
     atualizaTurma: (_, novosDados, { dataSources }) => dataSources.turmasAPI.atualizaTurma(novosDados),
     deletaTurma: (_, { id }, { dataSources }) => dataSources.turmasAPI.deletaTurma(id),
   },
+
+  Turma: {
+    matriculas: (parent, _, { dataSources }) => dataSources.
+    matriculasAPI.getMatriculasPorTurma(parent.id),
+    docente: (parent, _, { dataSources }) => dataSources.usersAPI.getUserById(parent.docente_id)
+    
+  
+  }
 
 }
 
